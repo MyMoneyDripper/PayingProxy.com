@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>payingproxy - The #1 Proxy Directory</title>
+    <title>ShareData.app - The #1 Data Sharing Directory</title>
     <style>
         * {
             margin: 0;
@@ -74,19 +75,19 @@
 
         .main {
             width: 100%;
-            padding: 2rem;
+            padding: 1rem 2rem;
             overflow-x: hidden;
         }
 
         .directory-container {
             max-width: 1800px;
             margin: 0 auto;
-            padding: 2rem 0;
+            padding: 0;
         }
 
         .hero {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1.5rem;
             max-width: 1800px;
             margin-left: auto;
             margin-right: auto;
@@ -113,9 +114,9 @@
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .gradient-text {
@@ -126,27 +127,28 @@
         }
 
         .hero-description {
-            font-size: 1.25rem;
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.9);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1rem;
         }
 
         .hero-features {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .feature {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             backdrop-filter: blur(10px);
+            font-size: 0.9rem;
         }
 
         .feature-icon {
@@ -232,7 +234,7 @@
             overflow-x: auto;
             overflow-y: hidden;
             backdrop-filter: blur(10px);
-            margin-top: 2rem;
+            margin-top: 0;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
@@ -426,11 +428,13 @@
             color: white;
         }
 
-        #proxyList, #aboutSection {
+        #proxyList,
+        #aboutSection {
             display: none;
         }
 
-        #proxyList.active, #aboutSection.active {
+        #proxyList.active,
+        #aboutSection.active {
             display: block;
         }
 
@@ -496,7 +500,8 @@
             backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 0.75rem;
-            color: #ffffff;  /* Add this line to ensure white text */
+            color: #ffffff;
+            /* Add this line to ensure white text */
         }
 
         .proxy-item:hover {
@@ -505,7 +510,8 @@
         }
 
         .proxy-item a {
-            color: #ffffff;  /* Add this to ensure links are also white */
+            color: #ffffff;
+            /* Add this to ensure links are also white */
             text-decoration: none;
         }
 
@@ -523,9 +529,17 @@
         }
 
         @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
+            0% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
         }
 
         .status-indicator {
@@ -588,8 +602,13 @@
         }
 
         @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .status-group {
@@ -615,7 +634,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
         .modal-content {
@@ -672,23 +691,35 @@
         }
     </style>
 </head>
+
 <body>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <h2 id="modalTitle" style="text-align: center; margin-bottom: 1.5rem; font-size: 1.75rem;"></h2>
             <div class="modal-grid">
-                <p><strong>Payout Rate:</strong></p><p><span id="modalPayoutRate"></span></p>
-                <p><strong>Minimum Payout:</strong></p><p><span id="modalMinimumPayout"></span></p>
-                <p><strong>Payout Method:</strong></p><p><span id="modalPayoutMethod"></span></p>
-                <p><strong>Sign Up Bonus:</strong></p><p><span id="modalSignUpBonus"></span></p>
-                <p><strong>Registration:</strong></p><p><span id="modalRegistrationRequired"></span></p>
-                <p><strong>Referral Program:</strong></p><p><span id="modalReferralProgram"></span></p>
-                <p><strong>Countries:</strong></p><p><span id="modalAvailableCountries"></span></p>
-                <p><strong>Platform:</strong></p><p><span id="modalPlatformSupported"></span></p>
-                <p><strong>Trustpilot:</strong></p><p><span id="modalScore"></span></p>
-                <p><strong>Play Store:</strong></p><p><span id="modalPlayStoreReview"></span></p>
-                <p><strong>App Store:</strong></p><p><span id="modalAppStoreReview"></span></p>
+                <p><strong>Payout Rate:</strong></p>
+                <p><span id="modalPayoutRate"></span></p>
+                <p><strong>Minimum Payout:</strong></p>
+                <p><span id="modalMinimumPayout"></span></p>
+                <p><strong>Payout Method:</strong></p>
+                <p><span id="modalPayoutMethod"></span></p>
+                <p><strong>Sign Up Bonus:</strong></p>
+                <p><span id="modalSignUpBonus"></span></p>
+                <p><strong>Registration:</strong></p>
+                <p><span id="modalRegistrationRequired"></span></p>
+                <p><strong>Referral Program:</strong></p>
+                <p><span id="modalReferralProgram"></span></p>
+                <p><strong>Countries:</strong></p>
+                <p><span id="modalAvailableCountries"></span></p>
+                <p><strong>Platform:</strong></p>
+                <p><span id="modalPlatformSupported"></span></p>
+                <p><strong>Trustpilot:</strong></p>
+                <p><span id="modalScore"></span></p>
+                <p><strong>Play Store:</strong></p>
+                <p><span id="modalPlayStoreReview"></span></p>
+                <p><strong>App Store:</strong></p>
+                <p><span id="modalAppStoreReview"></span></p>
             </div>
             <div style="text-align: center; margin-top: 1.5rem;">
                 <a id="modalLink" href="#" target="_blank" class="modal-button">Visit Website</a>
@@ -697,8 +728,8 @@
     </div>
     <header class="header">
         <div class="logo">
-            <div class="logo-img">P</div>
-            <span>payingproxy</span>
+            <div class="logo-img">S</div>
+            <span>ShareData.app</span>
         </div>
         <nav class="nav">
             <a href="#" class="nav-link active">Directory</a>
@@ -707,57 +738,31 @@
     </header>
 
     <main class="main">
-        <section class="hero">
-            <h1 class="hero-title">Find Your <span class="gradient-text">Proxy</span></h1>
-            <p class="hero-description">
-                Discover the most comprehensive directory of proxy sharing platforms.
-                Compare earnings, reliability, and features all in one place.
-            </p>
-            <div class="hero-features">
-                <div class="feature">
-                    <span class="feature-icon">🌍</span>
-                    <span>Global Coverage</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">💰</span>
-                    <span>Real Payouts</span>
-                </div>
-                <div class="feature">
-                    <span class="feature-icon">📱</span>
-                    <span>All Devices</span>
-                </div>
-            </div>
-        </section>
+
 
         <section class="directory">
             <div class="directory-container">
-                <h2 class="section-title">Proxy Sharing Directory</h2>
-                <p class="section-description">Compare platforms, earnings, and reliability ratings for all proxy providers.</p>
-                
-                <div class="filters">
-                    <button class="filter-btn active">All Platforms</button>
-                    <button class="filter-btn">Highly Reliable</button>
-                    <button class="filter-btn">Moderately Reliable</button>
-                    <button class="filter-btn">Caution Advised</button>
-                </div>
+                <h2 class="section-title">Data Sharing Directory</h2>
+                <p class="section-description">Compare platforms, earnings, and reliability ratings for all data sharing
+                    providers.</p>
 
-                <div class="platform-table">
-                    <div class="table-content">
-                        <div class="table-header">
-                            <div class="th platform">Platform</div>
-                            <div class="th bonus">Bonus</div>
-                            <div class="th payout">Payout Method</div>
-                            <div class="th min-payout">Min. Payout</div>
-                            <div class="th global">Global</div>
-                            <div class="th devices">Supported Devices</div>
-                            <div class="th reliability">Reliability</div>
-                            <div class="th action">Action</div>
-                        </div>
-                        <div id="platformList">
-                            <div class="loading">Loading platform data...</div>
-                        </div>
+                <div class="platform-table"></div>
+                <div class="table-content">
+                    <div class="table-header">
+                        <div class="th platform">Platform</div>
+                        <div class="th bonus">Bonus</div>
+                        <div class="th payout">Payout Method</div>
+                        <div class="th min-payout">Min. Payout</div>
+                        <div class="th global">Global</div>
+                        <div class="th devices">Supported Devices</div>
+                        <div class="th reliability">Reliability</div>
+                        <div class="th action">Action</div>
+                    </div>
+                    <div id="platformList">
+                        <div class="loading">Loading platform data...</div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>
@@ -771,11 +776,11 @@
             button.addEventListener('click', () => {
                 document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                
+
                 const filterText = button.textContent.trim();
                 let filteredPlatforms;
-                
-                switch(filterText) {
+
+                switch (filterText) {
                     case 'Highly Reliable':
                         filteredPlatforms = allPlatforms.filter(p => p.status === 'good');
                         break;
@@ -788,14 +793,14 @@
                     default:
                         filteredPlatforms = allPlatforms;
                 }
-                
+
                 renderPlatforms(filteredPlatforms);
             });
         });
 
         function renderPlatforms(platforms) {
             const platformList = document.getElementById('platformList');
-            
+
             const html = platforms.map(platform => {
                 // Split platform supported into array
                 const devices = platform.platformSupported.split(', ');
@@ -803,9 +808,9 @@
                 const payoutMethods = platform.payoutMethod.split(', ');
                 // Map status to reliability level
                 const reliability = platform.status === 'good' ? 'Highly Reliable' :
-                                  platform.status === 'somewhat' ? 'Moderately Reliable' :
-                                  'Caution Advised';
-                
+                    platform.status === 'somewhat' ? 'Moderately Reliable' :
+                        'Caution Advised';
+
                 return `
                 <div class="platform-row">
                     <div class="platform-info">
@@ -862,4 +867,5 @@
         loadPlatforms();
     </script>
 </body>
+
 </html>
