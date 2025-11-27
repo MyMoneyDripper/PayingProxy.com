@@ -100,8 +100,10 @@
                 -webkit-overflow-scrolling: touch;
             }
 
-            .table-content {
-                min-width: 1200px;
+            .table-content,
+            .table-header,
+            .platform-row {
+                min-width: 1000px;
             }
 
             .main {
@@ -254,13 +256,14 @@
         }
 
         .table-content {
-            min-width: max-content;
+            min-width: 1000px;
+            width: 100%;
         }
 
         .table-header {
             display: grid;
-            grid-template-columns: minmax(250px, 2.5fr) 120px minmax(120px, 1fr) minmax(180px, 1.5fr) minmax(200px, 2fr);
-            gap: 1.5rem;
+            grid-template-columns: minmax(200px, 1fr) minmax(80px, 1fr) minmax(100px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr);
+            gap: 0.25rem 0.1rem;
             padding: 1.5rem;
             background: rgba(255, 255, 255, 0.15);
             font-weight: 600;
@@ -268,6 +271,7 @@
             position: sticky;
             top: 0;
             z-index: 1;
+            min-width: 1000px;
         }
 
         .th {
@@ -275,10 +279,20 @@
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            text-align: left;
+        }
+
+        .th.reliability {
+            text-align: center;
         }
 
         .th.min-payout {
             text-align: center;
+        }
+
+        .platform-row > *:nth-child(2) {
+            display: flex;
+            justify-content: center;
         }
 
         .platform-row > *:nth-child(3) {
@@ -287,12 +301,13 @@
 
         .platform-row {
             display: grid;
-            grid-template-columns: minmax(250px, 2.5fr) 120px minmax(120px, 1fr) minmax(180px, 1.5fr) minmax(200px, 2fr);
-            gap: 1.5rem;
+            grid-template-columns: minmax(200px, 1fr) minmax(80px, 1fr) minmax(100px, 1fr) minmax(150px, 1fr) minmax(150px, 1fr);
+            gap: 0.25rem 0.1rem;
             padding: 1.5rem;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: background-color 0.3s ease;
+            min-width: 1000px;
         }
 
         .platform-row:hover {
@@ -306,7 +321,7 @@
         .platform-info {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
+            gap: 0.75rem;
         }
 
         .platform-icon {
@@ -392,6 +407,30 @@
             font-weight: 500;
             text-align: center;
             width: 100%;
+            position: relative;
+            cursor: help;
+        }
+
+        .reliability-badge::after {
+            content: attr(data-reliability);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .reliability-badge:hover::after {
+            opacity: 1;
         }
 
         .reliability-spinner {
@@ -771,8 +810,11 @@
             <span>ShareData.app</span>
         </div>
         <nav class="nav">
-            <a href="#" class="nav-link active">Directory</a>
-            <a href="guides.html" class="nav-link">Guides</a>
+            <a href="index.html" class="nav-link active">Home</a>
+            <a href="about-us.html" class="nav-link">About Us</a>
+            <a href="beginner-guide.html" class="nav-link">Beginner Guide</a>
+            <a href="ranking-methodology.html" class="nav-link">Ranking Methodology</a>
+            <a href="contact.html" class="nav-link">Contact</a>
         </nav>
     </header>
 
@@ -785,17 +827,18 @@
                 <p class="section-description">Compare platforms, earnings, and reliability ratings for all data sharing
                     providers.</p>
 
-                <div class="platform-table"></div>
-                <div class="table-content">
-                    <div class="table-header">
-                        <div class="th platform">Platform</div>
-                        <div class="th reliability">Reliability</div>
-                        <div class="th min-payout">Min. Payout</div>
-                        <div class="th payout">Payout Method</div>
-                        <div class="th devices">Supported Devices</div>
-                    </div>
-                    <div id="platformList">
-                        <div class="loading">Loading platform data...</div>
+                <div class="platform-table">
+                    <div class="table-content">
+                        <div class="table-header">
+                            <div class="th platform">Platform</div>
+                            <div class="th reliability">Reliability</div>
+                            <div class="th min-payout">Min. Payout</div>
+                            <div class="th payout">Payout Method</div>
+                            <div class="th devices">Supported Devices</div>
+                        </div>
+                        <div id="platformList">
+                            <div class="loading">Loading platform data...</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -861,7 +904,7 @@
                             <div class="platform-tag">${platform.payoutRate}</div>
                         </div>
                     </div>
-                    <div class="reliability-badge reliability-${platform.status}">
+                    <div class="reliability-badge reliability-${platform.status}" data-reliability="${reliability}">
                         <div class="reliability-spinner"></div>
                     </div>
                     <div>${platform.minimumPayout}</div>
